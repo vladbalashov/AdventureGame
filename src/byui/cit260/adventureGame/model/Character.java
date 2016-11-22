@@ -12,137 +12,89 @@ import java.util.Objects;
  *
  * @author Jack
  */
-public class Character implements Serializable{
+public enum Character implements Serializable{
+    
+    DoveShadow("There's something appealing about him, perhaps it's a feeling of guilt"
+            + " or perhaps it's simply his hatred. But nonetheless, people tend to stay"
+            + " on his good side, while thinking of ways to become his friend."),
+    AllysonLocks("There's something bewildering about her, perhaps it's a feeling of"
+            + " hospitality or perhaps it's simply a feeling of coldness. But"
+            + " nonetheless, people tend to invite her into their homes, while"
+            + " spreading stories about her."),
+    Gimkink("There's something captivating about him, perhaps it's his good looks or"
+            + " perhaps it's simply his suffering. But nonetheless, people tend to ask"
+            + " him about his latest victory, while befriending his friends to get closer to him."),
+    
+    Fizink("There's something curious about him, perhaps it's his suffering or perhaps it's"
+            + " simply his hatred. But nonetheless, people tend to ask him for favors, while"
+            + " hoping he will one day be their leader.");
+    
     
     // class instance variables
-    private String name;
-    private double level;
-    private boolean health;
-    private String faction;
-    private int attackPhysical;
-    private int defensePhysical;
-    private int attackMagical;
-    private int defenseMagical;
-
-    public Character() {
-    }
+    private final String description;
+    private final double health;
+    private final double physicalAttack;
+    private final double physicalDefense;
+    private final double magicalAttack;
+    private final double magicalDefense;
     
-    public String getName() {
-        return name;
+    private Weapons[] weapons;
+    private Potions[] potions;
+    
+
+    Character(String description) {
+
+    this.description = description;
+    health = 200;
+    physicalAttack=7;
+    physicalDefense=5;
+    magicalAttack=4;
+    magicalDefense=3;
+    
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    public String getDescription() {
+        return description;
     }
 
-    public double getLevel() {
-        return level;
-    }
 
-    public void setLevel(double level) {
-        this.level = level;
-    }
-
-    public boolean isHealth() {
+    public double getHealth() {
         return health;
     }
-
-    public void setHealth(boolean health) {
-        this.health = health;
+    
+    public double getPhysicalAttack() {
+        return physicalAttack;
+    }
+    
+    public double getPhysicalDefense() {
+        return physicalDefense;
+    }
+    
+    public double getMagicalAttack() {
+        return magicalAttack;
+    }
+    
+    public double getMagicalDefense() {
+        return magicalDefense;
     }
 
-    public String getFaction() {
-        return faction;
+    public Weapons[] getWeapons() {
+        return weapons;
     }
 
-    public void setFaction(String faction) {
-        this.faction = faction;
+    public void setWeapons(Weapons[] weapons) {
+        this.weapons = weapons;
     }
 
-    public int getAttackPhysical() {
-        return attackPhysical;
+    public Potions[] getPotions() {
+        return potions;
     }
 
-    public void setAttackPhysical(int attackPhysical) {
-        this.attackPhysical = attackPhysical;
+    public void setPotions(Potions[] potions) {
+        this.potions = potions;
     }
-
-    public int getDefensePhysical() {
-        return defensePhysical;
-    }
-
-    public void setDefensePhysical(int defensePhysical) {
-        this.defensePhysical = defensePhysical;
-    }
-
-    public int getAttackMagical() {
-        return attackMagical;
-    }
-
-    public void setAttackMagical(int attackMagical) {
-        this.attackMagical = attackMagical;
-    }
-
-    public int getDefenseMagical() {
-        return defenseMagical;
-    }
-
-    public void setDefenseMagical(int defenseMagical) {
-        this.defenseMagical = defenseMagical;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.name);
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.level) ^ (Double.doubleToLongBits(this.level) >>> 32));
-        hash = 71 * hash + (this.health ? 1 : 0);
-        hash = 71 * hash + Objects.hashCode(this.faction);
-        hash = 71 * hash + this.attackPhysical;
-        hash = 71 * hash + this.defensePhysical;
-        hash = 71 * hash + this.attackMagical;
-        hash = 71 * hash + this.defenseMagical;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Character other = (Character) obj;
-        if (Double.doubleToLongBits(this.level) != Double.doubleToLongBits(other.level)) {
-            return false;
-        }
-        if (this.health != other.health) {
-            return false;
-        }
-        if (this.attackPhysical != other.attackPhysical) {
-            return false;
-        }
-        if (this.defensePhysical != other.defensePhysical) {
-            return false;
-        }
-        if (this.attackMagical != other.attackMagical) {
-            return false;
-        }
-        if (this.defenseMagical != other.defenseMagical) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return Objects.equals(this.faction, other.faction);
-    }
-
-    @Override
-    public String toString() {
-        return "Character{" + "name=" + name + ", level=" + level + ", health=" + health + ", faction=" + faction + ", attackPhysical=" + attackPhysical + ", defensePhysical=" + defensePhysical + ", attackMagical=" + attackMagical + ", defenseMagical=" + defenseMagical + '}';
-    }
+    
+    
+    
 }

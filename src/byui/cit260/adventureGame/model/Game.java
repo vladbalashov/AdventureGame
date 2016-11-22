@@ -16,6 +16,13 @@ public class Game implements Serializable {
     
     private String currentLocation;
     private double saveSlot;
+    
+    private Player player;
+    private Enemies[] enemies;
+    private Map map;
+    private Scene[] scenes;
+    private Weapons[] weapon;
+    private Potions[] potion;
 
     public Game() {
     }
@@ -37,6 +44,59 @@ public class Game implements Serializable {
     public void setSaveSlot(double saveSlot) {
         this.saveSlot = saveSlot;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Enemies[] getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(Enemies[] enemies) {
+        this.enemies = enemies;
+    }
+    
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public Scene[] getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(Scene[] scenes) {
+        this.scenes = scenes;
+    }
+    
+
+    public Weapons[] getWeapons() {
+        return weapon;
+    }
+
+    public void setWeapons(Weapons[] weapons) {
+        this.weapon = weapons;
+    }
+
+    public Potions[] getPotions() {
+        return potion;
+    }
+
+    public void setPotions(Potions[] potions) {
+        this.potion = potions;
+    }
+    
+    
+    
+    
 
     @Override
     public int hashCode() {
