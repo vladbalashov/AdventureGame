@@ -7,7 +7,6 @@ package adventuregame;
 import byui.cit260.adventureGame.model.Character;
 import byui.cit260.adventureGame.model.Game;
 import byui.cit260.adventureGame.model.Map;
-import byui.cit260.adventureGame.model.PartyComposition;
 import byui.cit260.adventureGame.model.Player;
 import byui.cit260.adventureGame.view.StartGameView;
 
