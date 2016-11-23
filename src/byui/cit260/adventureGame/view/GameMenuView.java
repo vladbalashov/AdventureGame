@@ -6,6 +6,7 @@
 package byui.cit260.adventureGame.view;
 
 import adventuregame.AdventureGame;
+import byui.cit260.adventureGame.control.GameControl;
 import byui.cit260.adventureGame.model.Game;
 import byui.cit260.adventureGame.model.Location;
 import byui.cit260.adventureGame.model.Map;
@@ -33,6 +34,7 @@ public class GameMenuView extends View {
                   + "\nL - Choose location"
                   + "\nM - Display Map"
                   + "\nW - View Weapons"
+                  + "\nF - View Weapon with Max level of Physical Attack"
                   + "\nP - View Potions"
                   + "\nA - Calculate ability to win"
                   + "\nQ - Quit to Main Menu"
@@ -56,6 +58,9 @@ public class GameMenuView extends View {
                 break;
             case "W":
                 this.viewWeapons();
+                break;
+            case "F":
+                this.findWeaponWithMaxPhysicalAttack();
                 break;
             case "P":
                 this.viewPotions();
@@ -99,7 +104,7 @@ public class GameMenuView extends View {
         line = new StringBuilder("                                              ");
         line.insert(0, "DESCRIPTION");
         line.insert(20, "PH. ATTACK");
-        line.insert(30, "PH. DEFENSE");
+        line.insert(31, "PH. DEFENSE");
         System.out.println(line.toString());
         
         for (Weapons item : weapon) {
@@ -146,6 +151,14 @@ public class GameMenuView extends View {
         }
         System.out.println("-------------------------------------------------------------");
       }
+
+    private void findWeaponWithMaxPhysicalAttack() {
+        Game game = AdventureGame.getCurrentGame();
+        Weapons[] weapon = game.getWeapons();
+        
+        String weaponWithGreatAttack = weapon[GameControl.findWeaponWithMaxPhysicalAttack(weapon)].getDescription();
+        System.out.println("\nWeapon with maximum level of Physical Attack is "+weaponWithGreatAttack);
+    }
                 
     
  
