@@ -97,4 +97,6 @@ public double calcPotionNeeded(double defense1, double defense2, double attack1,
     return number;           
 }
 
+
+
 }
