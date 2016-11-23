@@ -86,7 +86,7 @@ public class GameControl {
         weapon[Item.massacre.ordinal()] = massacre;
         
         Weapons nimble = new Weapons();
-        nimble.setDescription("Nible");
+        nimble.setDescription("Nimble");
         nimble.setPhysicalAttack(15);
         nimble.setPhysicalDefense(8);
         weapon[Item.nimble.ordinal()] = nimble;
