@@ -57,7 +57,7 @@ public class GameControl {
         
     }
 
-    private static Weapons[] createWeaponsList() {
+    public static Weapons[] createWeaponsList() {
         
         Weapons[] weapon = new Weapons[12];
         
@@ -168,6 +168,20 @@ public class GameControl {
         locations[8][14].setScene(scenes[SceneType.finish.ordinal()]);
     }
 
+   public static int findWeaponWithMaxPhysicalAttack(Weapons[] weapon){
+       
+       int weaponsIndex = 0;
+       double maxValue = weapon[0].getPhysicalAttack();
+       for(int i=1; i < weapon.length-1; i++ ) {
+           if (weapon[i].getPhysicalAttack()> maxValue){
+               maxValue = weapon[i].getPhysicalAttack();
+               weaponsIndex = i;
+           }
+         
+       }
+       return weaponsIndex;
     
+    
+} 
     
 }
