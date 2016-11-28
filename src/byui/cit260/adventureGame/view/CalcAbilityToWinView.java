@@ -7,6 +7,7 @@ package byui.cit260.adventureGame.view;
 
 import byui.cit260.adventureGame.control.EncounterControl;
 import byui.cit260.adventureGame.model.Player;
+import exceptions.EncounterControlException;
 import java.util.Scanner;
 
 /**
@@ -291,29 +292,14 @@ public class CalcAbilityToWinView {
             double defenseMagical1, double attackPhysical2, double attackMagical2,
             double defensePhysical2, double defenseMagical2, double health1, double health2) {
         
-   double level = EncounterControl.calcAbilityToWin(attackPhysical1, attackMagical1, defensePhysical1,
+        double level = 0;
+        
+   try { EncounterControl.calcAbilityToWin(attackPhysical1, attackMagical1, defensePhysical1,
                 defenseMagical1, attackPhysical2, attackMagical2, defensePhysical2, defenseMagical2,
-                health1, health2);
-   if (level == -1000000) {
-       System.out.println("\nPlease enter correct parameters and try again");
-    return false;    
+                health1, health2);}
+   catch (EncounterControlException me){
+       System.out.println(me.getMessage());
    }
-   else if (level<=0) {
-       
-       System.out.println("\nYour ability to win is " + EncounterControl.calcAbilityToWin(attackPhysical1, attackMagical1, defensePhysical1, defenseMagical1, attackPhysical2, attackMagical2, defensePhysical2, defenseMagical2,
-health1, health2)+ " Unfortunately it is not enough to win. Use potion for help");
-    return true;
-   }
-   else {
-    
-    System.out.println("\nYour ability to win is " + EncounterControl.calcAbilityToWin(attackPhysical1, attackMagical1, defensePhysical1, defenseMagical1, attackPhysical2, attackMagical2, defensePhysical2, defenseMagical2,
-health1, health2)+ "\nWe wish you luck in your fight");
-    return true;
-       
-    }
-
-
-
-   
-    }   
+   return true;
+}
 }
