@@ -39,7 +39,13 @@ public class AdventureGame {
     public static void main(String[] args) {
         
         StartGameView startGameView = new StartGameView();
-        startGameView.displayStartGameView();
+        try {
+            startGameView.displayStartGameView();}
+        catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startGameView.displayStartGameView();
+        }
     }
     
 }
