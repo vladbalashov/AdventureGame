@@ -8,6 +8,9 @@ package byui.cit260.adventureGame.control;
 import byui.cit260.adventureGame.model.Map;
 import byui.cit260.adventureGame.model.Scene;
 import byui.cit260.adventureGame.model.Scene.SceneType;
+import byui.cit260.adventureGame.model.Character;
+import exceptions.MapControlException;
+import java.awt.Point;
 
 /**
  *
@@ -23,10 +26,26 @@ public class MapControl {
         GameControl.assignScenesToLocations(map, scenes);
         return map;
     }
+    
 
-    static void moveCharactersToStartingLocation(Map map) {
-        System.out.println("*** function createEnemiesList was called");
+
+    public static void moveCharactersToStartingLocation(Map map)
+                        throws MapControlException {
+        Character[] characters = Character.values();
+        
+        for (Character character : characters) {
+            Point coordinates = character.getCoordinates();
+            MapControl.moveCharacterToLocation(character, coordinates);
+            
+        }
     }
+    
+      private static int moveCharacterToLocation(Character character, Point coordinates) {
+    
+        System.out.println("Function MoveCharactertoLocation was called");
+        return 0;
+    
+}
 
     private static Scene[] createScenes() {
         
@@ -76,6 +95,7 @@ public class MapControl {
         
         return scenes;
     }
+
     public int location (int row, int column){
         int location = row + column;
         return location;

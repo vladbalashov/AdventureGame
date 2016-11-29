@@ -82,6 +82,7 @@ public static double calcAbilityToWin(double attackPhysical1, double attackMagic
     }
 
     double level = health2/check1 - health1/check2;
+    
     if (level <= 0){
             throw new EncounterControlException("Your ability to win is "+level+ " Unfortunately it is not enough to win."
                     + " Please use potion to win");

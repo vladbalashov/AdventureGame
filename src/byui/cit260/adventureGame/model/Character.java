@@ -7,6 +7,7 @@ package byui.cit260.adventureGame.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.awt.Point;
 
 /**
  *
@@ -37,6 +38,7 @@ public enum Character implements Serializable{
     private final double physicalDefense;
     private final double magicalAttack;
     private final double magicalDefense;
+    private final Point coordinates;
     
     private Weapons[] weapons;
     private Potions[] potions;
@@ -50,6 +52,7 @@ public enum Character implements Serializable{
     physicalDefense=5;
     magicalAttack=4;
     magicalDefense=3;
+    coordinates =  new Point(1,1);
     
     }
 
@@ -82,6 +85,12 @@ public enum Character implements Serializable{
     public Weapons[] getWeapons() {
         return weapons;
     }
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+    
+    
 
     public void setWeapons(Weapons[] weapons) {
         this.weapons = weapons;

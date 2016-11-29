@@ -17,6 +17,7 @@ import byui.cit260.adventureGame.model.Scene;
 import byui.cit260.adventureGame.model.Scene.SceneType;
 import byui.cit260.adventureGame.model.Weapons;
 import byui.cit260.adventureGame.model.Weapons.Item;
+import exceptions.MapControlException;
 
 /**
  *
@@ -53,7 +54,10 @@ public class GameControl {
         Map map = MapControl.createMap();
         game.setMap(map);
         
-        MapControl.moveCharactersToStartingLocation(map);
+        try{MapControl.moveCharactersToStartingLocation(map);}
+        catch (MapControlException me) {
+            System.out.println(me.getMessage());
+        }
         
     }
 
