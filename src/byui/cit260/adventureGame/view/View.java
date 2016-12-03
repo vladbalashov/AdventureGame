@@ -5,6 +5,9 @@
  */
 package byui.cit260.adventureGame.view;
 
+import adventuregame.AdventureGame;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,6 +17,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    
+    protected final BufferedReader keyboard = AdventureGame.getInFile();
+    protected final PrintWriter console = AdventureGame.getOutFile();
     
     public View() {
         
@@ -29,6 +35,7 @@ public abstract class View implements ViewInterface {
         
         boolean done = false; // set flag to not done
         do {
+            this.console.println(this.displayMessage);
             //prompt for and get players name
             String value = this.getInput();
             if (value.toUpperCase().equals("Q")) // user wants to quit 
@@ -42,24 +49,26 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput() {
         
-        Scanner keyboard = new Scanner(System.in); 
         boolean valid = false; 
         String value = null;
-        
+        try{
         while (!valid) {
             System.out.println("\n" + this.displayMessage);
             
-            value = keyboard.nextLine(); // get next line typed on keyboard
+            value = this.keyboard.readLine(); // get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length()<1) { // value is blank
-                System.out.println("\n*** You must enter a value *** ");
+                ErrorView.display(this.getClass().getName(), "You must enter a value");
                 continue;     
             }
             
             break; // end the loop
     }
-        
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+            return null;
+        }    
         return value;
     
 }

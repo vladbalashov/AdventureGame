@@ -35,7 +35,7 @@ public class HelpMenuView extends View {
         
         switch (value) {
             case "G": // goal of the game
-                System.out.println("\n****************************************"
+                this.console.println("\n****************************************"
                                  + "\n*-----------Goal of the Game-----------*"
                                  + "\n* The main goal of this game is to help*"
                                  + "\n* people of the land and win all       *"
@@ -44,7 +44,7 @@ public class HelpMenuView extends View {
                                  + "\n****************************************");
                 break;
             case "M":
-                System.out.println("\n****************************************"
+                this.console.println("\n****************************************"
                                  + "\n*-------------How to Move--------------*"
                                  + "\n* This part is under construction      *"
                                  + "\n*                                      *"
@@ -53,7 +53,7 @@ public class HelpMenuView extends View {
                                  + "\n****************************************");
                 break;
             case "W":
-                System.out.println("\n****************************************"
+                this.console.println("\n****************************************"
                                  + "\n*--------------How to Win--------------*"
                                  + "\n* This part is under construction      *"
                                  + "\n*                                      *"
@@ -62,7 +62,7 @@ public class HelpMenuView extends View {
                                  + "\n****************************************");
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
                 
         }

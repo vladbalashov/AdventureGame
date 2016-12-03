@@ -5,9 +5,12 @@
  */
 package byui.cit260.adventureGame.view;
 
+import adventuregame.AdventureGame;
 import byui.cit260.adventureGame.control.EncounterControl;
 import byui.cit260.adventureGame.model.Player;
 import exceptions.EncounterControlException;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -15,6 +18,9 @@ import java.util.Scanner;
  * @author vladbalashov
  */
 public class CalcAbilityToWinView {
+    
+    protected final BufferedReader keyboard = AdventureGame.getInFile();
+    protected final PrintWriter console = AdventureGame.getOutFile();
 
     void displayCalcAbilityToWinView() {
         
@@ -46,14 +52,14 @@ public class CalcAbilityToWinView {
     
         private String getQuit() {
             
-            Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+
         String value = ""; // value to be returned
         boolean valid = false; //initialized to not valid
-        
+        try {
         while (!valid) {
             System.out.println("\n If you want to quit press Q, if you want to stay press any button");
             
-            value = keyboard.nextLine(); // get next line typed on keyboard
+            value = this.keyboard.readLine(); // get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length()<1 ) { // value is incorrect
@@ -62,6 +68,9 @@ public class CalcAbilityToWinView {
          
     }
             break; // end the loop
+        }
+        }catch (Exception e){
+            System.out.println("Error reading input: " + e.getMessage());
         }
         
         return value; // return the value entered

@@ -44,7 +44,7 @@ public class ChooseLocationView extends View {
             case "L":
                 this.goToLanercoast();
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
                 
         }

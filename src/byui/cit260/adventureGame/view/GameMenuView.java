@@ -69,7 +69,7 @@ public class GameMenuView extends View {
                 this.displayCalcAbilityToWinView();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
                 
         }
@@ -100,12 +100,12 @@ public class GameMenuView extends View {
         Game game = AdventureGame.getCurrentGame();
         Weapons[] weapon = game.getWeapons();
         
-        System.out.println("\n LIST OF WEAPONS");
+        this.console.println("\n LIST OF WEAPONS");
         line = new StringBuilder("                                              ");
         line.insert(0, "DESCRIPTION");
         line.insert(20, "PH. ATTACK");
         line.insert(31, "PH. DEFENSE");
-        System.out.println(line.toString());
+        this.console.println(line.toString());
         
         for (Weapons item : weapon) {
             line = new StringBuilder("                                          ");
@@ -113,7 +113,7 @@ public class GameMenuView extends View {
             line.insert(23, item.getPhysicalAttack());
             line.insert(33, item.getPhysicalDefense());
             
-            System.out.println(line.toString());
+            this.console.println(line.toString());
         }
         
     }
@@ -130,9 +130,9 @@ public class GameMenuView extends View {
         Location location = new Location();
         String line;
         
-        System.out.println("----------------------Adventure Game Map-------------------- ");
-        System.out.println("  0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
-        System.out.println("-------------------------------------------------------------");
+        this.console.println("----------------------Adventure Game Map-------------------- ");
+        this.console.println("  0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19");
+        this.console.println("-------------------------------------------------------------");
         
         location = map.locations[0][0];
         for (int row = 0; row < 20; row++) {
@@ -147,9 +147,9 @@ public class GameMenuView extends View {
                     line += "|" + location.getScene().getMapSymbol();
                 }
             }
-            System.out.println(line + "|");
+            this.console.println(line + "|");
         }
-        System.out.println("-------------------------------------------------------------");
+        this.console.println("-------------------------------------------------------------");
       }
 
     private void findWeaponWithMaxPhysicalAttack() {
@@ -157,7 +157,7 @@ public class GameMenuView extends View {
         Weapons[] weapon = game.getWeapons();
         
         String weaponWithGreatAttack = weapon[GameControl.findWeaponWithMaxPhysicalAttack(weapon)].getDescription();
-        System.out.println("\nWeapon with maximum level of Physical Attack is "+weaponWithGreatAttack);
+        this.console.println("\nWeapon with maximum level of Physical Attack is "+weaponWithGreatAttack);
     }
                 
     

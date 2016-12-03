@@ -5,8 +5,11 @@
  */
 package byui.cit260.adventureGame.view;
 
+import adventuregame.AdventureGame;
 import byui.cit260.adventureGame.control.GameControl;
 import byui.cit260.adventureGame.model.Player;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -16,6 +19,8 @@ import java.util.Scanner;
 public class StartGameView {
     
     private String promptMessage;
+    protected final BufferedReader keyboard = AdventureGame.getInFile();
+    protected final PrintWriter console = AdventureGame.getOutFile();
     
     public StartGameView(){
         
@@ -62,14 +67,13 @@ public class StartGameView {
 
     private String getPlayersName() {
         
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; //initialized to not valid
-        
+        try{
         while (!valid) {
             System.out.println("\n" + this.promptMessage);
             
-            value = keyboard.nextLine(); // get next line typed on keyboard
+            value = this.keyboard.readLine(); // get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length()<1) { // value is blank
@@ -81,7 +85,9 @@ public class StartGameView {
             
             break; // end the loop
         }
-        
+        }catch (Exception e){
+            System.out.println("Error reading input: " + e.getMessage());
+        }
         return value; // return the value entered
     }
 

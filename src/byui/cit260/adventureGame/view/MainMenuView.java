@@ -7,7 +7,7 @@ package byui.cit260.adventureGame.view;
 
 import adventuregame.AdventureGame;
 import byui.cit260.adventureGame.control.GameControl;
-import java.util.Scanner;
+import java.io.BufferedReader;
 
 /**
  *
@@ -67,7 +67,17 @@ public class MainMenuView extends View {
     }
 
     private void loadGame() {
-        System.out.println("\n*** LoadGame function called ***");
+        
+        this.console.println("\n\nEnter the file path for file where the game is saved");
+        
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.getSavedGame(filePath);
+        } catch(Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
     }
 
     private void displayHelpMenu() {
@@ -79,7 +89,18 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        System.out.println("\n*** SaveGame function called");
+        this.console.println("\n\nEnter the file path for the file where the game"
+                            + "is to be saved");
+        
+        String filePath = this.getInput();
+        
+        try {
+            
+            GameControl.saveGame(AdventureGame.getCurrentGame(), filePath);
+            
+        } catch (Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
     
 }
