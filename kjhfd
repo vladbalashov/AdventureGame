@@ -1,0 +1,12 @@
+
+
+List of Enemies
+
+Name           Location    Health    Physical Attack   Physical Defense    Magical Attack    Magical Defense    
+----           --------    ------    ---------------   ----------------    --------------    ---------------    
+Riphate        Cullfield   200.0     5.0               1.0                 5.0               4.0                
+Sparkcoin      Cullfield   220.0     7.0               8.0                 10.0              6.0                
+Thiefspeed     Dalry       240.0     9.0               3.0                 11.0              9.0                
+Venomvomit     Holbeck     260.0     12.0              12.0                12.0              12.0               
+Freezemiser    Lanercoast  280.0     14.0              6.0                 18.0              10.0               
+CarnalFlame    Lanercoast  300.0     15.0              10.0                18.0              15.0               

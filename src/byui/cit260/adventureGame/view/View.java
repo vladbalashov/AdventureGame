@@ -35,7 +35,6 @@ public abstract class View implements ViewInterface {
         
         boolean done = false; // set flag to not done
         do {
-            this.console.println(this.displayMessage);
             //prompt for and get players name
             String value = this.getInput();
             if (value.toUpperCase().equals("Q")) // user wants to quit 

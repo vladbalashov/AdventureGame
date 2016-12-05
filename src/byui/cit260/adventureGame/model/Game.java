@@ -18,7 +18,7 @@ public class Game implements Serializable {
     private double saveSlot;
     
     private Player player;
-    private Enemies[] enemies;
+    private Enemies[] enemy;
     private Map map;
     private Scene[] scenes;
     private Weapons[] weapon;
@@ -54,11 +54,11 @@ public class Game implements Serializable {
     }
 
     public Enemies[] getEnemies() {
-        return enemies;
+        return enemy;
     }
 
     public void setEnemies(Enemies[] enemies) {
-        this.enemies = enemies;
+        this.enemy = enemies;
     }
     
     public Map getMap() {

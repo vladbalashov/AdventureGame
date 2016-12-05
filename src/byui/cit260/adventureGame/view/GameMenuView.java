@@ -7,11 +7,14 @@ package byui.cit260.adventureGame.view;
 
 import adventuregame.AdventureGame;
 import byui.cit260.adventureGame.control.GameControl;
+import byui.cit260.adventureGame.model.Enemies;
 import byui.cit260.adventureGame.model.Game;
 import byui.cit260.adventureGame.model.Location;
 import byui.cit260.adventureGame.model.Map;
 import byui.cit260.adventureGame.model.Scene;
 import byui.cit260.adventureGame.model.Weapons;
+import exceptions.GameControlException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
@@ -36,6 +39,7 @@ public class GameMenuView extends View {
                   + "\nW - View Weapons"
                   + "\nF - View Weapon with Max level of Physical Attack"
                   + "\nP - View Potions"
+                  + "\nE - View Enemies"
                   + "\nA - Calculate ability to win"
                   + "\nQ - Quit to Main Menu"
                   + "\n---------------------------------");
@@ -67,6 +71,9 @@ public class GameMenuView extends View {
                 break;
             case "A":
                 this.displayCalcAbilityToWinView();
+                break;
+            case "E":
+                this.viewEnemies();
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -158,6 +165,45 @@ public class GameMenuView extends View {
         
         String weaponWithGreatAttack = weapon[GameControl.findWeaponWithMaxPhysicalAttack(weapon)].getDescription();
         this.console.println("\nWeapon with maximum level of Physical Attack is "+weaponWithGreatAttack);
+    }
+
+    private void viewEnemies() {
+       this.console.println("\n\nEnter the filepath where the list should be saved:");
+        String filePath = this.getInput();
+    
+        
+        try {
+            saveListOfEnemies(filePath);
+            this.console.println("Your file was succesfully saved to "+ filePath);
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+    }
+
+    private void saveListOfEnemies(String filePath) 
+                        throws GameControlException {
+        
+        Game game = AdventureGame.getCurrentGame();
+        Enemies[] enemy = game.getEnemies();
+        
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            out.println("\n\nList of Enemies");
+            out.printf("%n%-15s%-12s%-10s%-18s%-20s%-18s%-19s", "Name", "Location", "Health", "Physical Attack",
+                    "Physical Defense", "Magical Attack", "Magical Defense");
+            out.printf("%n%-15s%-12s%-10s%-18s%-20s%-18s%-19s", "----", "--------", "------", "---------------",
+                    "----------------", "--------------", "---------------");
+            
+            for (Enemies enemyList : enemy) {
+                
+                out.printf("%n%-15s%-12s%-10s%-18s%-20s%-18s%-19s", enemyList.getName(), enemyList.getLocation(),
+                        enemyList.getHealth(), enemyList.getPhysicalAttack(), enemyList.getPhysicalDefense(),
+                        enemyList.getMagicalAttack(), enemyList.getMagicalDefense());
+                
+            }
+            
+        }catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
     }
                 
     

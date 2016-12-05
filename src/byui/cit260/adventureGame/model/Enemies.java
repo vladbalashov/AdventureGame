@@ -6,45 +6,100 @@
 package byui.cit260.adventureGame.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author vladbalashov
  */
-public enum Enemies implements Serializable {
+public class Enemies implements Serializable {
     
-    Riphate ("This vicious wizard is spurred onward by vengeance. He uses illusions"
-            + " in his schemes, always corrupting other magic-users to achieve his goals."
-            + " He has no hope."),
-    Sparkcoin ("This vicious magic-user is spurred onward by fear. He uses forbidden magic"
-            + " in his plots, commonly engaging in blackmail of clerical leaders to achieve "
-            + "his goals. He can't resist a fight."),
-    Thiefspeed ("This chaste mage is spurred onward by egotism. He uses high magic in his plots,"
-            + " usually exploring distant dimensions to achieve his goals. He is hiding a dark secret."),
-    Venomvomit ("This unwise witch is driven by egotism. She employs demonology in her plots, usually"
-            + " summoning demon troops to achieve her goals. She has non-human ancestry."),
-    Freezemiser ("This elegant magician is driven by curiosity. He uses illusions in his plans, often"
-            + " decieving others with complex illusions to achieve his goals. He is haunted by dark memories."),
-    Carnalflame ("This conceited wizard is motivated by revenge. He employs forbidden magic in his plots,"
-            + " always unleashing unspeakable dark forces to achieve his goals. He has a peculiar affinity"
-            + " for magical items.");
+    public enum EnemyList {
     
-    private final String description;
-    private final double health;
-    
-    Enemies (String description) {
-        
-        this.description = description;
-        health = 300;
+    Riphate,
+    Sparkcoin,
+    Thiefspeed,
+    Venomvomit,
+    Freezemiser,
+    Carnalflame;
     }
     
+    private String name;
+    private String description;
+    private double health;
+    private double physicalAttack;
+    private double physicalDefense;
+    private double magicalAttack;
+    private double magicalDefense;
+    private String location;
+    
+    
+    public Enemies () {
+        
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public double getHealth() {
         return health;
     }
-    
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public double getPhysicalAttack() {
+        return physicalAttack;
+    }
+
+    public void setPhysicalAttack(double physicalAttack) {
+        this.physicalAttack = physicalAttack;
+    }
+
+    public double getPhysicalDefense() {
+        return physicalDefense;
+    }
+
+    public void setPhysicalDefense(double physicalDefense) {
+        this.physicalDefense = physicalDefense;
+    }
+
+    public double getMagicalAttack() {
+        return magicalAttack;
+    }
+
+    public void setMagicalAttack(double magicalAttack) {
+        this.magicalAttack = magicalAttack;
+    }
+
+    public double getMagicalDefense() {
+        return magicalDefense;
+    }
+
+    public void setMagicalDefense(double magicalDefense) {
+        this.magicalDefense = magicalDefense;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+   
 }

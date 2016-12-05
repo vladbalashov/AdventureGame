@@ -7,6 +7,7 @@ package byui.cit260.adventureGame.control;
 
 import adventuregame.AdventureGame;
 import byui.cit260.adventureGame.model.Enemies;
+import byui.cit260.adventureGame.model.Enemies.EnemyList;
 import byui.cit260.adventureGame.model.Game;
 import byui.cit260.adventureGame.model.Location;
 import byui.cit260.adventureGame.model.Map;
@@ -52,6 +53,9 @@ public class GameControl {
         
         Weapons[] weaponsList = GameControl.createWeaponsList();
         game.setWeapons(weaponsList);
+        
+        Enemies[] enemiesList = GameControl.createEnemiesList();
+        game.setEnemies(enemiesList);
         
         Potions [] potionsList = GameControl.createPotionsList();
         game.setPotions(potionsList);
@@ -145,6 +149,88 @@ public class GameControl {
         return weapon;
         
 
+    }
+    
+    public static Enemies[] createEnemiesList() {
+        
+        Enemies[] enemy = new Enemies[6];
+        
+        Enemies riphate = new Enemies();
+        riphate.setName("Riphate");
+        riphate.setDescription("This vicious wizard is spurred onward by vengeance. He uses illusions"
+            + " in his schemes, always corrupting other magic-users to achieve his goals."
+            + " He has no hope.");
+        riphate.setPhysicalAttack(5);
+        riphate.setPhysicalDefense(1);
+        riphate.setMagicalAttack(5);
+        riphate.setMagicalDefense(4);
+        riphate.setHealth(200);
+        riphate.setLocation("Cullfield");
+        enemy[EnemyList.Riphate.ordinal()] = riphate;
+        
+        Enemies sparkcoin = new Enemies();
+        sparkcoin.setName("Sparkcoin");
+        sparkcoin.setDescription("This vicious magic-user is spurred onward by fear. He uses forbidden magic"
+            + " in his plots, commonly engaging in blackmail of clerical leaders to achieve "
+            + "his goals. He can't resist a fight.");
+        sparkcoin.setPhysicalAttack(7);
+        sparkcoin.setPhysicalDefense(8);
+        sparkcoin.setMagicalAttack(10);
+        sparkcoin.setMagicalDefense(6);
+        sparkcoin.setHealth(220);
+        sparkcoin.setLocation("Cullfield");
+        enemy[EnemyList.Sparkcoin.ordinal()] = sparkcoin;
+        
+        Enemies thiefspeed = new Enemies();
+        thiefspeed.setName("Thiefspeed");
+        thiefspeed.setDescription("This chaste mage is spurred onward by egotism. He uses high magic in his plots,"
+            + " usually exploring distant dimensions to achieve his goals. He is hiding a dark secret.");
+        thiefspeed.setPhysicalAttack(9);
+        thiefspeed.setPhysicalDefense(3);
+        thiefspeed.setMagicalAttack(11);
+        thiefspeed.setMagicalDefense(9);
+        thiefspeed.setHealth(240);
+        thiefspeed.setLocation("Dalry");
+        enemy[EnemyList.Thiefspeed.ordinal()] = thiefspeed;
+        
+        Enemies venomvomit = new Enemies();
+        venomvomit.setName("Venomvomit");
+        venomvomit.setDescription("This unwise witch is driven by egotism. She employs demonology in her plots, usually"
+            + " summoning demon troops to achieve her goals. She has non-human ancestry.");
+        venomvomit.setPhysicalAttack(12);
+        venomvomit.setPhysicalDefense(12);
+        venomvomit.setMagicalAttack(12);
+        venomvomit.setMagicalDefense(12);
+        venomvomit.setHealth(260);
+        venomvomit.setLocation("Holbeck");
+        enemy[EnemyList.Venomvomit.ordinal()] = venomvomit;
+        
+        Enemies freezemiser = new Enemies();
+        freezemiser.setName("Freezemiser");
+        freezemiser.setDescription("This elegant magician is driven by curiosity. He uses illusions in his plans, often"
+            + " decieving others with complex illusions to achieve his goals. He is haunted by dark memories.");
+        freezemiser.setPhysicalAttack(14);
+        freezemiser.setPhysicalDefense(6);
+        freezemiser.setMagicalAttack(18);
+        freezemiser.setMagicalDefense(10);
+        freezemiser.setHealth(280);
+        freezemiser.setLocation("Lanercoast");
+        enemy[EnemyList.Freezemiser.ordinal()] = freezemiser;
+        
+        Enemies carnalflame = new Enemies();
+        carnalflame.setName("CarnalFlame");
+        carnalflame.setDescription("This conceited wizard is motivated by revenge. He employs forbidden magic in his plots,"
+            + " always unleashing unspeakable dark forces to achieve his goals. He has a peculiar affinity"
+            + " for magical items.");
+        carnalflame.setPhysicalAttack(15);
+        carnalflame.setPhysicalDefense(10);
+        carnalflame.setMagicalAttack(18);
+        carnalflame.setMagicalDefense(15);
+        carnalflame.setHealth(300);
+        carnalflame.setLocation("Lanercoast");
+        enemy[EnemyList.Carnalflame.ordinal()] = carnalflame;
+        
+        return enemy;
     }
 
     private static Potions[] createPotionsList() {
