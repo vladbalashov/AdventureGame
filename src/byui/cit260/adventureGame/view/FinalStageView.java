@@ -5,11 +5,6 @@
  */
 package byui.cit260.adventureGame.view;
 
-import adventuregame.AdventureGame;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import static javafx.application.Platform.exit;
-
 /**
  *
  * @author vladbalashov
