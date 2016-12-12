@@ -5,6 +5,7 @@
  */
 package byui.cit260.adventureGame.control;
 
+import exceptions.EncounterControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -26,7 +27,7 @@ public class EncounterControlTest {
      * Test of calcAbilityToWin method, of class EncounterControl.
      */
     @Test
-    public void testCalcAbilityToWin() {
+    public void testCalcAbilityToWin() throws EncounterControlException {
         System.out.println("calcAbilityToWin");
         System.out.println("\tTest case #1");
         double attackPhysical1 = 15.0;

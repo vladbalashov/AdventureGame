@@ -84,7 +84,9 @@ public class GameMenuView extends View {
     }
 
     private void chooseCharacter() {
-         System.out.println("\n*** chooseCharacter() function called ***");
+         ChooseCharacterView chooseCharacterView = new ChooseCharacterView();
+         
+         chooseCharacterView.display();
     }
 
     private void chooseLocation() {

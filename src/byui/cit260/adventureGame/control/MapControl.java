@@ -5,18 +5,26 @@
  */
 package byui.cit260.adventureGame.control;
 
+import adventuregame.AdventureGame;
 import byui.cit260.adventureGame.model.Map;
 import byui.cit260.adventureGame.model.Scene;
 import byui.cit260.adventureGame.model.Scene.SceneType;
 import byui.cit260.adventureGame.model.Character;
+import byui.cit260.adventureGame.model.Location;
 import exceptions.MapControlException;
 import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.util.Arrays;
 
 /**
  *
  * 
  */
 public class MapControl {
+    
+    protected final BufferedReader keyboard = AdventureGame.getInFile();
+    protected final PrintWriter console = AdventureGame.getOutFile();
 
     static Map createMap() {
         Map map = new Map(20, 20);
@@ -31,20 +39,32 @@ public class MapControl {
 
     public static void moveCharactersToStartingLocation(Map map)
                         throws MapControlException {
-        Character[] characters = Character.values();
+        //Character[] characters = Character.values();
         
-        for (Character character : characters) {
-            Point coordinates = character.getCoordinates();
-            MapControl.moveCharacterToLocation(character, coordinates);
+        //for (Character character : characters) {
+
+            //MapControl.moveCharacterToLocation(character, coordinates);
+        MapControl.moveCharacterToLocation(map, 1, 1);
             
         }
-    }
+    //}
     
-      private static int moveCharacterToLocation(Character character, Point coordinates) {
+      //private static int moveCharacterToLocation(Character character, Point coordinates) {
+          
+      
+        //return 0;
     
-        System.out.println("Function MoveCharactertoLocation was called");
-        return 0;
     
+//}
+
+    public static void moveCharacterToLocation(Map map, int row, int column) {
+        
+        map.setCurrentLocation(map.getLocations()[row][column]);
+        map.getCurrentLocation().setVisited(true);
+        
+        map.setCurrentRow(row);
+        map.setCurrentColumn(column);
+
 }
 
     private static Scene[] createScenes() {
@@ -96,8 +116,4 @@ public class MapControl {
         return scenes;
     }
 
-    public int location (int row, int column){
-        int location = row + column;
-        return location;
-    }
 }

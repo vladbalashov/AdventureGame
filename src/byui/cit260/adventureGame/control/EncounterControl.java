@@ -5,6 +5,10 @@
  */
 package byui.cit260.adventureGame.control;
 
+import adventuregame.AdventureGame;
+import byui.cit260.adventureGame.model.Enemies;
+import byui.cit260.adventureGame.model.Game;
+import byui.cit260.adventureGame.model.Player;
 import exceptions.EncounterControlException;
 
 /**
@@ -13,8 +17,55 @@ import exceptions.EncounterControlException;
  */
 public class EncounterControl {
 
-public String attackEnemy(int attackPhysical, int defensePhysical, 
-         int attackMagical, int defenseMagical, int health){
+    public static double attackRiphate(Enemies[] enemy) throws EncounterControlException {
+        double physicalAttack1 = 5;
+        double physicalDefense1 = 6;
+        double magicalAttack1 = 3;
+        double magicalDefense1 = 2;
+        double health1 = 200;
+        double physicalAttack2 = enemy[0].getPhysicalAttack();
+        double physicalDefense2 = enemy[0].getPhysicalDefense();
+        double magicalAttack2 = enemy[0].getMagicalAttack();
+        double magicalDefense2 = enemy[0].getMagicalDefense();
+        double health2 = enemy[0].getHealth();
+        
+        double attack1 = physicalAttack1+ magicalAttack1;
+        double defense1 = physicalDefense1+ magicalDefense1;
+        double attack2 = physicalAttack2+ magicalAttack2;
+        double defense2 = physicalDefense2+ magicalDefense2;
+        
+        double check1 = health1/(attack2-defense1);
+        double check2 = health2/(attack1-defense2);
+        
+        if (check1>check2) {
+            
+           throw new EncounterControlException("\nCongratulations! You won! Thank you for saving"
+                    + "\npeople of Cullfieled from Ripahte."
+                    + "\nWe are in eternal debt before you.");
+            
+           //result = "Congratulations! You won! Thank you for saving people of Cullfieled from Ripahte."
+                   //+ "We are in eternal debt before you."; 
+        }
+        if (check1<check2) {
+            
+            throw new EncounterControlException("\nUnfourtunately,you lost. May be you need to take health "
+                    + "potion to obtain more power");
+            //result = "Unfourtunately,you lost. May be you need to take health potion to obtain more power";
+        }
+            
+        if (check1==check2) {
+            
+            throw new EncounterControlException("You are equal. Please, take potion to win and save people"
+                    + " of Cullfield");
+        }
+        return check1;
+    }
+
+public String attackEnemy(){
+    
+    Game game = AdventureGame.getCurrentGame();
+    Player player = game.getPlayer();
+    
    return "This is the return statement from attackEnemy()\n";      
 }
 public String usePotion(String name, int amount) {

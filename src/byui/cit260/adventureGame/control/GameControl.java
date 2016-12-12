@@ -305,6 +305,7 @@ public class GameControl {
             throw new GameControlException(e.getMessage());
         }
         AdventureGame.setCurrentGame(game);
+        
     }
     
 }
